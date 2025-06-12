@@ -1,0 +1,430 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* CSS Reset */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  overflow-x: hidden;
+}
+
+/* Nav Menu */
+
+nav {
+  display: flex;
+  background-color: white;
+  padding: 20px 0;
+  color: white;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+nav .logo {
+  cursor: pointer;
+  transition: 0.5s ease;
+  margin-left: 10%;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  width: 40%;
+  justify-content: space-evenly;
+  border-bottom: 3px solid transparent;
+}
+
+.logologin img {
+  margin: 0 70%;
+  transition: 0.5s ease;
+}
+
+.logologin img:hover {
+  transform: scale(1.1);
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+  transition: 0.3s ease;
+  opacity: 0.5;
+}
+
+nav ul li a:hover {
+  color: #2626e2;
+  border-bottom: 3px solid;
+  font-size: 18px;
+}
+
+/* Hamburger Menu */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-toggle input {
+  position: absolute;
+  width: 40px;
+  height: 28px;
+  left: -5px;
+  top: -3px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+
+/* Hamburger Menu Animation */
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+  background-color: white;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(4) {
+  background-color: white;
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.logologin h2 {
+  font-size: 25px;
+  color: black;
+}
+
+/* Container */
+
+.art {
+  width: 100%;
+  height: 110vh;
+  margin: 0 auto;
+  background-image: linear-gradient(#0606c5, #2121ae, #3434c0);
+  text-align: center;
+  color: white;
+}
+
+.art .descart {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: munculDariBawah 0.6s ease-out forwards;
+  animation: munculDariBawah 0.6s ease-out forwards;
+}
+
+.art .descart h3 {
+  padding-top: 200px;
+  color: white;
+  font-size: 50px;
+}
+
+.art .descart h4 {
+  font-size: 30px;
+  padding-top: 40px;
+  font-weight: 350;
+}
+
+.kotak {
+  width: 80%;
+  height: 500px;
+  text-align: center;
+  background-color: white;
+  margin: -10% auto;
+  border-radius: 20px;
+  box-shadow: 0 0 4px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: munculDariBawah 0.6s ease-out forwards;
+}
+
+.tittle h3 {
+  padding: 50px 0;
+  font-size: 50px;
+}
+
+.tambah i {
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  text-decoration: none;
+  color: black;
+  font-size: 70px;
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: munculDariBawah 0.6s ease-out forwards;
+}
+
+.tambah i:hover {
+  transform: scale(1.1);
+}
+
+/* Download */
+
+.download {
+  margin-top: 300px;
+  width: 100%;
+  height: 100px;
+  background-image: linear-gradient(#0606c5, #2121ae, #3434c0);
+  box-shadow: 0 0 25px;
+}
+
+.download .karakter img {
+  width: 450px;
+  overflow: hidden;
+}
+
+.logodownload {
+  display: grid;
+  grid-template-columns: 220px 220px 500px;
+  margin-left: 50px;
+}
+
+.logodownload1 {
+  margin-top: 13px;
+  transition: 0.5s ease;
+}
+
+.logodownload1:hover {
+  transform: scale(1.1);
+}
+
+.logodownload2 {
+  transition: 0.5s ease;
+}
+
+.logodownload2:hover {
+  transform: scale(1.1);
+}
+
+.karakter {
+  position: absolute;
+  right: 15%;
+  bottom: -1461px;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  height: 300px;
+  background-color: black;
+}
+
+.atas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.logofooter {
+  right: 15%;
+  position: absolute;
+}
+
+.logososmed {
+  font-size: 35px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  padding: 30px 100px;
+  text-decoration: none;
+}
+
+.instagram,
+.youtube,
+.twitter,
+.tiktok {
+  transition: 0.5s ease;
+  color: white;
+}
+
+.instagram:hover,
+.youtube:hover,
+.twitter:hover,
+.tiktok:hover {
+  transform: scale(1.1);
+}
+
+.garis {
+  border-top: 1px solid white;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.lokasi {
+  color: wheat;
+  margin: 20px 35px;
+}
+
+/* Keyframe animasi */
+@keyframes munculDariBawah {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
