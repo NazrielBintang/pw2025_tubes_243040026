@@ -88,6 +88,7 @@ function upload()
 function hapus($id)
 {
     $conn = koneksi();
+    
     mysqli_query($conn, "DELETE FROM art WHERE id = $id");
 
     return mysqli_affected_rows($conn);
@@ -111,12 +112,8 @@ function ubah($data)
     $judul = htmlspecialchars($data["judul"]);
     $deskripsi = htmlspecialchars($data["deskripsi"]);
 
-    $query = "UPDATE art SET 
-                gambar = '$gambar',
-                judul = '$judul',
-                deskripsi = '$deskripsi'
-                WHERE id = $id
-                ";
+    $query = "UPDATE art SET gambar = '$gambar', judul = '$judul', deskripsi = '$deskripsi' WHERE id = $id";
+
 
 
     mysqli_query($conn, $query);
@@ -126,12 +123,9 @@ function ubah($data)
 
 function cari($keyword)
 {
-    $query = "SELECT * art 
-                WHERE
-                gambar = '$keyword',
-                judul = '$keyword',
-                deskripsi = '$keyword'
-                ";
+    $query = "SELECT * FROM art 
+              WHERE judul LIKE '%$keyword%' 
+              OR deskripsi LIKE '%$keyword%'";
 
     return query($query);
 }
@@ -166,7 +160,7 @@ function registrasi($data)
     }
 
 
-    mysqli_query($conn, "INSERT INTO users (username, password, gambar, deskripsi) VALUES ('$username', '$password', '', '')");
+    mysqli_query($conn, "INSERT INTO users (username, password) VALUES ('$username', '$password')");
 
     mysqli_affected_rows($conn);
 
@@ -182,24 +176,5 @@ function registrasi($data)
             document.location.href = 'registrasi.php';
         </script>";
         return false;
-    }
-
-    function login($data)
-    {
-        $conn = koneksi();
-
-        $username = htmlspecialchars($data["username"]);
-        $password = htmlspecialchars($data["password"]);
-
-        if ($username == 'admin' && $password == 'admin123') {
-
-            header("Location: dashboard/dashboard.php");
-            exit;
-        } else {
-            return [
-                'error' => true,
-                'pesan' => 'username / password salah'
-            ];
-        }
     }
 }

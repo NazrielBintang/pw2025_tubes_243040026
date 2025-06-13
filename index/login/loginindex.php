@@ -25,6 +25,14 @@ if ( isset($_SESSION["login"]) ) {
 
 $conn = koneksi();
 
+if ( isset($_SESSION["login"]) ) {
+    header("Location: ../communityuser.php");
+    exit;
+
+}
+
+$conn = koneksi();
+
 if (isset($_POST["submit"])) {
 
     $username = $_POST["username"];
@@ -43,8 +51,16 @@ if (isset($_POST["submit"])) {
                 setcookie("key", hash("sha224", $row["username"]), time() + 60);
             }
 
-            header("Location: ../Gameuser.php");
-            exit;
+            if ($username == 'admin' && $password == 'admin') {
+
+            header("Location: ../../dashboard/dashboard.php");
+            exit; 
+        } else {
+
+                header("Location: ../communityuser.php");
+                exit;
+            }
+
         }
     }
 

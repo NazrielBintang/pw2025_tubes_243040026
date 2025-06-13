@@ -21,6 +21,7 @@ if ( isset($_COOKIE["id"]) && isset($_COOKIE["key"]) ) {
 if ( isset($_SESSION["login"]) ) {
     header("Location: ../communityuser.php");
     exit;
+
 }
 
 $conn = koneksi();
@@ -43,8 +44,16 @@ if (isset($_POST["submit"])) {
                 setcookie("key", hash("sha224", $row["username"]), time() + 60);
             }
 
-            header("Location: ../communityuser.php");
-            exit;
+            if ($username == 'admin' && $password == 'admin') {
+
+            header("Location: ../../dashboard/dashboard.php");
+            exit; 
+        } else {
+
+                header("Location: ../communityuser.php");
+                exit;
+            }
+
         }
     }
 
@@ -103,7 +112,7 @@ if (isset($_POST["submit"])) {
                 <h5>Belum Punya Akun?</h5>
             </div>
             <div class="tombolreg" style="font-size: 21px;">
-                <a href="../registrasi/registrasi.php">
+                <a href="../../registrasi/registrasi.php">
                     <h6>registrasi</h6>
                 </a>
             </div>

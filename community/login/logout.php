@@ -12,6 +12,6 @@ setcookie("id", "", time() - 60);
 
 setcookie("key", "", time() - 60);
 
-header("Location: community/login/logincommunity.php")
+header("Location: ../community.php")
 
 ?>

@@ -1,12 +1,5 @@
 <?php
 
-session_start();
-
-if (!isset($_SESSION["login"])) {
-    header("Location: login/logincommunity.php");
-    exit;
-}
-
 require '../functions.php';
 
 $id = $_GET["id"];
@@ -15,7 +8,7 @@ $art = query("SELECT * FROM art WHERE id = $id")[0];
 
 if (isset($_POST["submit"])) {
     if (ubah($_POST) > 0) {
-        header("Location: ../community/community.php");
+        header("Location: dashboard.php");
         exit;
     } else {
         $gagal = "Data gagal ditambahkan";

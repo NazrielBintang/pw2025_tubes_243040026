@@ -6,7 +6,6 @@ if (!isset($_SESSION["login"])) {
     header("Location: login/loginindex.php");
 }
 
-
 ?>
 
 
@@ -23,7 +22,7 @@ if (!isset($_SESSION["login"])) {
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="Game.css">
+    <link rel="stylesheet" href="Gameuser.css">
 </head>
 
 <body>
@@ -39,9 +38,9 @@ if (!isset($_SESSION["login"])) {
             </ul>
 
             <div class="logologin">
-                <a href="../login/login.php"><img src="img/NavLogin.png" alt="" width="150" height="50"></a>
+                <a href="login/logout.php" style="font-size: 35px;color: white;"><i class="bi bi-box-arrow-left"></i></a>
             </div>
-            
+
             <div class="menu-toggle">
                 <input type="checkbox">
                 <span></span>
@@ -51,7 +50,7 @@ if (!isset($_SESSION["login"])) {
         </nav>
     </header>
 
-    <div class="container">
+     <div class="container">
         <div class="gambar">
             <img src="img/COC.jpeg" alt="">
         </div>
@@ -60,27 +59,27 @@ if (!isset($_SESSION["login"])) {
             <div class="descgambar">
                 <img src="img/Desc.png" alt="" width="600" height="400">
             </div>
-            <div class="teks">
-                <h1>PIMPIN PASUKAN UNTUK MERAIH KEMENANGAN!!!</h1>
+            <div class="teks" style="align-content: center;margin: 20px;">
+                <h1 style="margin-bottom: 20px;">PIMPIN PASUKAN UNTUK MERAIH KEMENANGAN!!!</h1>
                 <h4>Jawab panggilan si kumis! Bergabunglah dalam pertikaian internasional yang disebut Clash of Clans. Sesuaikan desa Anda, bangun pasukan, dan hancurkan lawan Anda. Suka menggunakan persahabatan untuk menakut-nakuti musuh Anda? Bergabunglah dengan Klan, atau bangun warisan Clash dengan menciptakan warisan Anda sendiri. Pilihan ada di tangan Anda dalam komunitas Barbarian yang beranggotakan jutaan orang ini. Unduh gratis dan teruslah Clash, Chief!</h4>
             </div>
         </div>
 
         <div class="news">
-            <div class="newstittle">
+            <div class="newstittle" style="text-align: center;margin-top: 100px;font-size: 60px;margin-bottom: 70px;">
                 <h1>News</h1>
             </div>
 
-            <div class="newsgrid">
+            <div class="newsgrid" style="display: grid;grid-template-columns: repeat(2, 1fr);justify-items: center;">
                 <div class="newspoto1">
                     <img src="img/newslogo1.png" alt="" width="500" height="270">
-                    <h3>CLASH OF CLANS</h3>
-                    <h4>Dark Days Are Upon Us!</h4>
+                    <h3 style="text-align: center;margin: 20px;font-size: 25px;">CLASH OF CLANS</h3>
+                    <h4 style="text-align: center;font-size: 15px;">Dark Days Are Upon Us!</h4>
                 </div>
                 <div class="newspoto2">
                     <img src="img/newslogo2.png" alt="" width="500" height="270">
-                    <h3>CLASH OF CLANS</h3>
-                    <h4>Mini Spotlight Event: Super Yeti!</h4>
+                    <h3 style="text-align: center;margin: 20px;font-size: 25px;">CLASH OF CLANS</h3>
+                    <h4 style="text-align: center;font-size: 15px;">Mini Spotlight Event: Super Yeti!</h4>
                 </div>
             </div>
         </div>
@@ -107,7 +106,7 @@ if (!isset($_SESSION["login"])) {
                 <div class="tiktok"><a href="https://www.tiktok.com/@clashofclans"><i class="bi bi-tiktok"></i></a></div>
             </div>
             <div class="garis"></div>
-            <div class="lokasi">
+            <div class="lokasi" style="color: wheat;margin: 20px 35px;">
                 <h6>Supercell</h6>
                 <h6>OyJätkäsaarenlaituri</h6>
                 <h6>100180</h6>

@@ -8,7 +8,7 @@ if (isset($_POST["register"])) {
         echo
         "<script>
         alert('Registrasi Berhasil');
-        document.location.href = '../community/community.php';
+        document.location.href = '../community/login/logincommunity.php';
         </script>";
     } else {
         "<script>

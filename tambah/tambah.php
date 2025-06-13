@@ -11,7 +11,7 @@ require '../functions.php';
 
 if (isset($_POST["submit"])) {
     if (tambah($_POST) > 0) {
-        header("Location: ../community/community.php");
+        header("Location: ../community/communityuser.php");
         exit;
     } else {
         $gagal = "Data gagal ditambahkan";

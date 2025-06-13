@@ -26,7 +26,7 @@ if (isset($_POST["cari"])) {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Daftar Mahasiswa</h1>
+                <h1>Daftar Users</h1>
 
                 <form action="" method="post">
 
@@ -48,11 +48,11 @@ if (isset($_POST["cari"])) {
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= $seni['judul'] ?></td>
-                            <td><?= $seni['gambar'] ?></td>
+                            <td><img src="img/<?= $seni['gambar'] ?>" style="max_width: 150px; max-height: 100px; object-fit: cover;" alt=""></td>
                             <td><?= $seni['deskripsi'] ?></td>
                             <td>
-                                <a href="ubah.php?id= <?= $seni["id"] ?>" <button type="button" class="btn btn-danger"><i class="bi bi-pencil-square"></i></a></button> ||
-                                <a href="hapus.php?id= <?= $seni["id"]; ?>"><button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
+                                <a href="ubah.php?id= <?=$seni["id"]; ?>" <button type="button" class="btn btn-danger"><i class="bi bi-pencil-square"></i></a></button> ||
+                                <a href="hapus.php?id= <?=$seni["id"]; ?>"><button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
