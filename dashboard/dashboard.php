@@ -28,11 +28,9 @@ if (isset($_POST["cari"])) {
             <div class="col">
                 <h1>Daftar Users</h1>
 
-                <form action="" method="post">
-
-                    <input type="text" name="keyword" size="40" autofocus placeholder="Masukan Pencarian" autocomplete="">
-                    <button type="submit" name="cari">Cari!</button>
-
+                <form class="d-flex" role="search" action="" method="post">
+                    <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success" name="cari" type="submit">Search</button>
                 </form>
 
                 <table class="table table-hover">
@@ -51,8 +49,8 @@ if (isset($_POST["cari"])) {
                             <td><img src="img/<?= $seni['gambar'] ?>" style="max_width: 150px; max-height: 100px; object-fit: cover;" alt=""></td>
                             <td><?= $seni['deskripsi'] ?></td>
                             <td>
-                                <a href="ubah.php?id= <?=$seni["id"]; ?>" <button type="button" class="btn btn-danger"><i class="bi bi-pencil-square"></i></a></button> ||
-                                <a href="hapus.php?id= <?=$seni["id"]; ?>"><button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
+                                <a href="ubah.php?id= <?= $seni["id"]; ?>" <button type="button" class="btn btn-danger"><i class="bi bi-pencil-square"></i></a></button> ||
+                                <a href="hapus.php?id= <?= $seni["id"]; ?>"><button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>

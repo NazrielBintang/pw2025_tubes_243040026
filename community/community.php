@@ -2,9 +2,6 @@
 
 require "../functions.php";
 
-if (isset($_POST["cari"])) {
-    $art = cari($_POST["keyword"]);
-}
 
 
 $jumlahDataPerhalaman = 3;
@@ -20,7 +17,11 @@ $awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
 $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
 
 
+if (isset($_POST["cari"])) {
+    $art = cari($_POST["keyword"]);
+}
 ?>
+
 
 
 
@@ -35,7 +36,7 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="communityuser.css">
+    <link rel="stylesheet" href="community.css">
 </head>
 
 <header>
@@ -70,7 +71,7 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="Game.css">
+    <link rel="stylesheet" href="community.css">
 </head>
 
 <style>
@@ -166,14 +167,6 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
         animation: slidedownfade .5s .5s forwards;
     }
 
-    .pagination {
-        font-size: 20px;
-        width: 10px;
-        height: 25px;
-        margin: 20px;
-        display: flex;
-
-    }
 
 
     .cari {
@@ -181,6 +174,49 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
         margin-left: 25px;
         margin-bottom: 20px;
         font-size: 30px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        width: fit-content;
+        margin-left: 30px;
+    }
+
+    .page-item {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 15px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .page-item:hover {
+        background-color: #e0e0e0;
+        color: #000;
+    }
+
+    .page-item.active {
+        background-color: #ffcccc;
+        color: red;
+        border-color: red;
+        font-weight: bold;
+    }
+
+
+    form .d-flex {
+        text-align: left;
+        margin: 25px;
     }
 
     /* Animation */
@@ -224,7 +260,7 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
             </ul>
 
             <div class="logologin">
-                <a href="login/logincommunity.php"><img src="img/NavLogin.png" width="150" height="70" alt=""></i></a>
+                <a href="login/logincommunity.php"><img src="img/NavLogin.png" width="150" height="50" alt=""></i></a>
             </div>
 
 
@@ -236,7 +272,6 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
             </div>
         </nav>
     </header>
-
     <div class="container">
         <div class="art">
             <div class="descart">
@@ -251,103 +286,91 @@ $art = query("SELECT * FROM art LIMIT $awalData, $jumlahDataPerhalaman");
                     Buat Karyamu!!!
                 </h3>
             </div>
+
             <div class="pagination">
                 <?php if ($halamanAktif > 1) : ?>
-
                 <?php endif; ?>
-
                 <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-
                     <?php if ($i == $halamanAktif) : ?>
-
-                        <a href="?halaman=<?= $i ?>" class="page-item" style="margin-left: 15px; color: red;margin-right: 10px;"><?= $i; ?></a>
-
+                        <a href="?halaman=<?= $i ?>" class="page-item_active" style="margin-left: 15px; color: blue;margin-right: 10px;"><?= $i; ?></a>
                     <?php else : ?>
-
-                        <a href="?halaman=<?= $i ?>"><?= $i; ?></a>
-
+                        <a href="?halaman=<?= $i ?>" class="page-item"><?= $i; ?></a>
                     <?php endif; ?>
-
                 <?php endfor; ?>
-
                 <?php if ($halamanAktif < $jumlahHalaman) : ?>
-
                 <?php endif; ?>
 
             </div>
 
-
-            <form action="" method="post">
-            <div class="cari">
-                <input type="text" name="keyword" style="font-size: 20px;" size="40" autofocus placeholder="Masukan Pencarian" autocomplete="">
-                <button type="submit" name="cari">Cari!</button>
-            </div>
+            <form class="d-flex" role="search" action="" method="post" style="text-align: left; margin: 25px; font-size: 30px;">
+                <input class="form-control me-2" type="search" style="width: 50%; height: 30px;" name="keyword" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" name="cari" type="submit">Search</button>
             </form>
 
             <div class="karya">
-            <?php $i = 1; ?>
-            <?php foreach ($art as $seni) : ?>
-                <div class="card">
-                    <a href="#karya<?= $i ?>"><img src="../dashboard/img/<?= $seni['gambar'] ?>" style="width: 100%; max-height: 200px; object-fit: cover;" alt=""></a>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $seni['judul'] ?></h5>
-                        <p class="card-text"><?= $seni['deskripsi'] ?></p>
+                <?php $i = 1; ?>
+                <?php foreach ($art as $seni) : ?>
+                    <div class="card">
+                        <a href="#karya<?= $i ?>"><img src="../dashboard/img/<?= $seni['gambar'] ?>" style="width: 100%; max-height: 200px; object-fit: cover;" alt=""></a>
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $seni['judul'] ?></h5>
+                            <p class="card-text"><?= $seni['deskripsi'] ?></p>
 
+                        </div>
                     </div>
+                <?php $i++;
+                endforeach; ?>
+            </div>
+
+            <?php $j = 1; ?>
+            <?php foreach ($art as $seni) : ?>
+                <div class="overlay" id="karya<?= $j ?>">
+                    <a href="#!" class="close">close</a>
+                    <img src="../dashboard/img/<?= $seni['gambar'] ?>" style="width: 80%; max-height: 100%; object-fit: contain;" alt="">
                 </div>
-            <?php $i++;
+            <?php $j++;
             endforeach; ?>
         </div>
 
-        <?php $j = 1; ?>
-        <?php foreach ($art as $seni) : ?>
-            <div class="overlay" id="karya<?= $j ?>">
-                <a href="#!" class="close">close</a>
-                <img src="../dashboard/img/<?= $seni['gambar'] ?>" style="width: 80%; max-height: 100%; object-fit: contain;" alt="">
-            </div>
-        <?php $j++;
-        endforeach; ?>
-    </div>
 
-
-    <div class="tambah">
-        <a href="../community/login/logincommunity.php"><i class="bi bi-plus-circle-fill"></i></a>
-    </div>
-
-    <div class="download">
-        <div class="logodownload">
-            <div class="logodownload1">
-                <a href="https://apps.apple.com/us/app/clash-of-clans/id529479190"><img src="img/appstore.png" alt=""></a>
-            </div>
-            <div class="logodownload2">
-                <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans&referrer=mat_click_id%3Df6890da7bad79ed3290aa334b12d358d-20141216-1681&pli=1"><img src="img/playstore.png" alt=""></a>
-            </div>
+        <div class="tambah">
+            <a href="login/logincommunity.php"><i class="bi bi-plus-circle-fill"></i></a>
         </div>
-    </div>
 
-    <div class="footer">
-        <div class="atas">
-            <div class="logososmed" style="color: blue;">
-                <div class="youtube"><a href="https://www.youtube.com/@ClashOfClans"><i class="bi bi-youtube"></i></a></div>
-                <div class="instagram"><a href="https://www.instagram.com/supercell/"><i class="bi bi-instagram"></i></div></a>
-                <div class="twitter"><a href="https://x.com/supercell"><i class="bi bi-twitter"></i></a></div>
-                <div class="tiktok"><a href="https://www.tiktok.com/@clashofclans"><i class="bi bi-tiktok"></i></a></div>
-            </div>
-
-            <div class="logofooter">
-                <img src="img/LogoFooter.png" alt="" width="50" height="50">
+        <div class="download">
+            <div class="logodownload">
+                <div class="logodownload1">
+                    <a href="https://apps.apple.com/us/app/clash-of-clans/id529479190"><img src="img/appstore.png" alt=""></a>
+                </div>
+                <div class="logodownload2">
+                    <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans&referrer=mat_click_id%3Df6890da7bad79ed3290aa334b12d358d-20141216-1681&pli=1"><img src="img/playstore.png" alt=""></a>
+                </div>
             </div>
         </div>
 
+        <div class="footer">
+            <div class="atas">
+                <div class="logososmed" style="color: blue;">
+                    <div class="youtube"><a href="https://www.youtube.com/@ClashOfClans"><i class="bi bi-youtube"></i></a></div>
+                    <div class="instagram"><a href="https://www.instagram.com/supercell/"><i class="bi bi-instagram"></i></div></a>
+                    <div class="twitter"><a href="https://x.com/supercell"><i class="bi bi-twitter"></i></a></div>
+                    <div class="tiktok"><a href="https://www.tiktok.com/@clashofclans"><i class="bi bi-tiktok"></i></a></div>
+                </div>
 
-        <div class="garis"></div>
-        <div class="lokasi" style="color: wheat;margin: 20px 35px;">
-            <h6>Supercell</h6>
-            <h6>OyJätkäsaarenlaituri</h6>
-            <h6>100180</h6>
-            <h6>HelsinkiFinland</h6>
+                <div class="logofooter">
+                    <img src="img/LogoFooter.png" alt="" width="50" height="50">
+                </div>
+            </div>
+
+
+            <div class="garis"></div>
+            <div class="lokasi" style="color: wheat;margin: 20px 35px;">
+                <h6>Supercell</h6>
+                <h6>OyJätkäsaarenlaituri</h6>
+                <h6>100180</h6>
+                <h6>HelsinkiFinland</h6>
+            </div>
         </div>
-    </div>
     </div>
 
 

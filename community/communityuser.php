@@ -174,20 +174,45 @@ if (isset($_POST["cari"])) {
     }
 
     .pagination {
-        font-size: 20px;
-        width: 10px;
-        height: 25px;
-        margin: 20px;
         display: flex;
-
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        width: fit-content;
+        margin-left: 30px;
     }
 
+    .page-item {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 15px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-    .cari {
+    .page-item:hover {
+        background-color: #e0e0e0;
+        color: #000;
+    }
+
+    .page-item.active {
+        background-color: #ffcccc;
+        color: red;
+        border-color: red;
+        font-weight: bold;
+    }
+
+    form .d-flex {
         text-align: left;
-        margin-left: 25px;
-        margin-bottom: 20px;
-        font-size: 30px;
+        margin: 25px;
     }
 
     /* Animation */
@@ -260,36 +285,23 @@ if (isset($_POST["cari"])) {
             </div>
             <div class="pagination">
                 <?php if ($halamanAktif > 1) : ?>
-
                 <?php endif; ?>
-
                 <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-
                     <?php if ($i == $halamanAktif) : ?>
-
-                        <a href="?halaman=<?= $i ?>" class="page-item" style="margin-left: 15px; color: red;margin-right: 10px;"><?= $i; ?></a>
-
+                        <a href="?halaman=<?= $i ?>" class="page-item_active" style="margin-left: 15px; color: blue;margin-right: 10px;"><?= $i; ?></a>
                     <?php else : ?>
-
-                        <a href="?halaman=<?= $i ?>"><?= $i; ?></a>
-
+                        <a href="?halaman=<?= $i ?>" class="page-item"><?= $i; ?></a>
                     <?php endif; ?>
-
                 <?php endfor; ?>
-
                 <?php if ($halamanAktif < $jumlahHalaman) : ?>
-
                 <?php endif; ?>
-
             </div>
 
 
-            <div class="cari">
-                <form action="" method="post">
-                    <input type="text" name="keyword" style="font-size: 20px;" size="40" autofocus placeholder="Masukan Pencarian" autocomplete="">
-                    <button type="submit" name="cari">Cari!</button>
-                </form>
-            </div>
+            <form class="d-flex" role="search" action="" method="post" style="text-align: left; margin: 25px; font-size: 30px;">
+                <input class="form-control me-2" type="search" style="width: 50%; height: 30px;" name="keyword" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" name="cari" type="submit">Search</button>
+            </form>
 
             <div class="karya">
                 <?php $i = 1; ?>

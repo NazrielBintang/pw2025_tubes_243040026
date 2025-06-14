@@ -14,12 +14,67 @@
 
 <style>
 
+        
+
     .descgambar {
         transition: 0.5s ease;
     }
-    
+
     .descgambar:hover {
         transform: scale(1.1);
+    }
+
+    /* Responsive */
+
+    @media screen and (max-width: 1000px) {
+
+        .newsgrid {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+
+
+    /* Ukuran Handphone */
+
+    @media (max-width: 576px) {
+        body {
+            overflow-x: hidden;
+        }
+
+        .menu-toggle {
+            display: flex;
+            z-index: 10;
+        }
+
+        nav ul {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+            background-color: black;
+            z-index: -1;
+            transform: translatey(-50%);
+            transition: all 1s;
+            opacity: 0;
+            z-index: 10;
+        }
+
+
+        nav ul.slide {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .newsgrid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            justify-items: center;
+        }
     }
 </style>
 
@@ -127,37 +182,33 @@
                 <div class="logodownload2">
                     <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans&referrer=mat_click_id%3Df6890da7bad79ed3290aa334b12d358d-20141216-1681&pli=1"><img src="img/playstore.png" alt=""></a>
                 </div>
-                <div class="karakter">
-                    <img src="img/downloadkarakter.png" alt="">
+            </div>
+
+            <div class="footer">
+                <div class="logososmed" style="color: blue;">
+                    <div class="youtube"><a href="https://www.youtube.com/@ClashOfClans"><i class="bi bi-youtube"></i></a></div>
+                    <div class="instagram"><a href="https://www.instagram.com/supercell/"><i class="bi bi-instagram"></i></div></a>
+                    <div class="twitter"><a href="https://x.com/supercell"><i class="bi bi-twitter"></i></a></div>
+                    <div class="tiktok"><a href="https://www.tiktok.com/@clashofclans"><i class="bi bi-tiktok"></i></a></div>
+                </div>
+                <div class="garis"></div>
+                <div class="lokasi" style="color: wheat;margin: 20px 35px;">
+                    <h6>Supercell</h6>
+                    <h6>OyJätkäsaarenlaituri</h6>
+                    <h6>100180</h6>
+                    <h6>HelsinkiFinland</h6>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            <div class="logososmed" style="color: blue;">
-                <div class="youtube"><a href="https://www.youtube.com/@ClashOfClans"><i class="bi bi-youtube"></i></a></div>
-                <div class="instagram"><a href="https://www.instagram.com/supercell/"><i class="bi bi-instagram"></i></div></a>
-                <div class="twitter"><a href="https://x.com/supercell"><i class="bi bi-twitter"></i></a></div>
-                <div class="tiktok"><a href="https://www.tiktok.com/@clashofclans"><i class="bi bi-tiktok"></i></a></div>
-            </div>
-            <div class="garis"></div>
-            <div class="lokasi" style="color: wheat;margin: 20px 35px;">
-                <h6>Supercell</h6>
-                <h6>OyJätkäsaarenlaituri</h6>
-                <h6>100180</h6>
-                <h6>HelsinkiFinland</h6>
-            </div>
-        </div>
-    </div>
+        <script>
+            const menuToggle = document.querySelector('.menu-toggle input')
+            const nav = document.querySelector('nav ul')
 
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle input')
-        const nav = document.querySelector('nav ul')
-
-        menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('slide');
-        });
-    </script>
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('slide');
+            });
+        </script>
 
 
 </body>

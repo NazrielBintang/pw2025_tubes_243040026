@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
                 setcookie("key", hash("sha224", $row["username"]), time() + 60);
             }
 
-            if ($username == 'admin' && $password == 'admin') {
+            if ($username == 'admin') {
 
             header("Location: ../../dashboard/dashboard.php");
             exit; 
